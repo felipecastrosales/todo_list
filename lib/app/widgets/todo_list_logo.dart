@@ -10,7 +10,10 @@ class TodoListLogo extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Image.asset('assets/logo.png', height: 200),
+        Image.asset(
+          'assets/logo.png',
+          height: 200,
+        ),
         Text(
           'Todo List',
           style: context.textTheme.headline6,

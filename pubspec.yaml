@@ -25,3 +25,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/
+  fonts: 
+    - family: TodoListIcons
+      fonts: 
+        - asset: assets/fonts/TodoListIcons.ttf
