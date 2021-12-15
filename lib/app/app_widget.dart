@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'core/database/sqlite_adm_connection.dart';
+import 'modules/auth/auth_module.dart';
 import 'modules/splash/splash_page.dart';
 
 class AppWidget extends StatefulWidget {
@@ -32,6 +33,10 @@ class _AppWidgetState extends State<AppWidget> {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
+      initialRoute: '/login',
+      routes: {
+        ...AuthModule().routers,
+      },
       home: const SplashPage(),
     );
   }
