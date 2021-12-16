@@ -8,6 +8,7 @@ environment:
 
 dependencies:
   cupertino_icons: ^1.0.2
+  firebase_auth: ^2.0.0
   flutter:
     sdk: flutter
   flutter_signin_button: ^2.0.0
@@ -25,7 +26,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/
-  fonts: 
+  fonts:
     - family: TodoListIcons
-      fonts: 
+      fonts:
         - asset: assets/fonts/TodoListIcons.ttf
