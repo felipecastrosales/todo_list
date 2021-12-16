@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:todo_list/app/ui/theme_extensions.dart';
 
 class TodoListLogo extends StatelessWidget {
-  const TodoListLogo({Key? key}) : super(key: key);
+  final double size;
+  const TodoListLogo({Key? key, required this.size}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +13,7 @@ class TodoListLogo extends StatelessWidget {
       children: [
         Image.asset(
           'assets/logo.png',
-          height: 200,
+          height: size,
         ),
         Text(
           'Todo List',

@@ -52,7 +52,7 @@ class RegisterPage extends StatelessWidget {
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.5,
             child: const FittedBox(
-              child: TodoListLogo(),
+              child: TodoListLogo(size: 100),
               fit: BoxFit.fitHeight,
             ),
           ),
