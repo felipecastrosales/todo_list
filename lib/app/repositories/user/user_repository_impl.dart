@@ -16,6 +16,7 @@ class UserRepositoryImpl implements UserRepository {
         email: email,
         password: password,
       );
+      return userCredential.user;
     } on FirebaseAuthException catch (e, s) {
       print(e);
       print(s);
