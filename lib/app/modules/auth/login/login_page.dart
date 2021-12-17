@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_signin_button/flutter_signin_button.dart';
-import 'package:todo_list/app/widgets/todo_list_field.dart';
 
-import 'package:todo_list/app/widgets/todo_list_logo.dart';
+import 'package:todo_list/app/core/widgets/todo_list_field.dart';
+import 'package:todo_list/app/core/widgets/todo_list_logo.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({Key? key}) : super(key: key);

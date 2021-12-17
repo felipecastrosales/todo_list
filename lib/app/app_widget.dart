@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'core/database/sqlite_adm_connection.dart';
+import 'core/ui/todo_list_ui_config.dart';
 import 'modules/auth/auth_module.dart';
 import 'modules/splash/splash_page.dart';
-import 'ui/todo_list_ui_config.dart';
 
 class AppWidget extends StatefulWidget {
   const AppWidget({Key? key}) : super(key: key);

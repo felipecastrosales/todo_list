@@ -4,9 +4,9 @@ import 'package:provider/provider.dart';
 import 'package:validatorless/validatorless.dart';
 
 import 'package:todo_list/app/core/validators/validators.dart';
-import 'package:todo_list/app/ui/theme_extensions.dart';
-import 'package:todo_list/app/widgets/todo_list_field.dart';
-import 'package:todo_list/app/widgets/todo_list_logo.dart';
+import 'package:todo_list/app/core/ui/theme_extensions.dart';
+import 'package:todo_list/app/core/widgets/todo_list_field.dart';
+import 'package:todo_list/app/core/widgets/todo_list_logo.dart';
 import 'register_controller.dart';
 
 class RegisterPage extends StatefulWidget {

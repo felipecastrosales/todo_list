@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:todo_list/app/ui/theme_extensions.dart';
+import 'package:todo_list/app/core/ui/theme_extensions.dart';
 
 class TodoListLogo extends StatelessWidget {
   final double size;
