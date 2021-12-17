@@ -10,7 +10,7 @@ class UserRepositoryImpl implements UserRepository {
   }) : _firebaseAuth = firebaseAuth;
 
   @override
-  Future<User?> register(String email, String password) async {
+  Future<User?> register(String email, String password,) async {
     try {
       final userCredential = await _firebaseAuth.createUserWithEmailAndPassword(
         email: email,

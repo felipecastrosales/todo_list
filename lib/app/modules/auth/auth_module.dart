@@ -8,15 +8,20 @@ import 'package:todo_list/app/core/modules/todo_list_module.dart';
 
 class AuthModule extends TodoListModule {
   AuthModule()
-      : super(bindings: [
-          ChangeNotifierProvider(
-            create: (_) => LoginController(),
-          ),
-          ChangeNotifierProvider(
-            create: (_) => RegisterController(),
-          ),
-        ], routers: {
-          '/login': (context) => const LoginPage(),
-          '/register': (context) => const RegisterPage(),
-        });
+      : super(
+          bindings: [
+            ChangeNotifierProvider(
+              create: (_) => LoginController(),
+            ),
+            ChangeNotifierProvider(
+              create: (context) => RegisterController(
+                userService: context.read(),
+              ),
+            ),
+          ],
+          routers: {
+            '/login': (context) => const LoginPage(),
+            '/register': (context) => const RegisterPage(),
+          },
+        );
 }
