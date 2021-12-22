@@ -5,4 +5,8 @@ abstract class UserService {
     String email,
     String password,
   );
+  Future<User?> login(
+    String email,
+    String password,
+  );
 }
