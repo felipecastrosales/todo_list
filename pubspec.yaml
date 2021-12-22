@@ -12,6 +12,7 @@ dependencies:
   firebase_core: ^1.3.0
   flutter:
     sdk: flutter
+  flutter_overlay_loader: ^0.1.1
   flutter_signin_button: ^2.0.0
   google_fonts: ^2.1.0
   path: ^1.8.0

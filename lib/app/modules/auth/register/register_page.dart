@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
+import 'package:todo_list/app/core/notifier/default_listener_notifier.dart';
 import 'package:validatorless/validatorless.dart';
 
 import 'package:todo_list/app/core/validators/validators.dart';
@@ -25,21 +26,41 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   initState() {
     super.initState();
-    context.read<RegisterController>().addListener(() {
-      final controller = context.read<RegisterController>();
-      var success = controller.success;
-      var error = controller.error;
-      if (success == true) {
+    final defaultListener = DefaultListenerNotifier(
+      changeNotifier: context.read<RegisterController>(),
+    );
+    defaultListener.listener(
+      context: context,
+      successCallback: (
+        notifier,
+        listenerInstance,
+      ) {
+        listenerInstance.dispose();
         Navigator.of(context).pop();
-      } else if (error != null && error.isNotEmpty) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(error),
-            backgroundColor: Colors.red,
-          ),
-        );
-      }
-    });
+      },
+      // optional 
+      // errorCallback: (
+      //   notifier,
+      //   listenerInstance,
+      // ) {
+      //   listenerInstance.dispose();
+      // },
+    );
+    // context.read<RegisterController>().addListener(() {
+    //   final controller = context.read<RegisterController>();
+    //   var success = controller.success;
+    //   var error = controller.error;
+    //   if (success == true) {
+    //     Navigator.of(context).pop();
+    //   } else if (error != null && error.isNotEmpty) {
+    //     ScaffoldMessenger.of(context).showSnackBar(
+    //       SnackBar(
+    //         content: Text(error),
+    //         backgroundColor: Colors.red,
+    //       ),
+    //     );
+    //   }
+    // });
   }
 
   @override
