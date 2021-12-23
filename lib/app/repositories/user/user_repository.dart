@@ -9,4 +9,5 @@ abstract class UserRepository {
     String email,
     String password,
   );
+  Future<void> forgotPassword(String email);
 }

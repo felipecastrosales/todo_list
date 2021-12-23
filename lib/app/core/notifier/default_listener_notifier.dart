@@ -15,9 +15,13 @@ class DefaultListenerNotifier {
   void listener({
     required BuildContext context,
     required SuccessVoidCallback successCallback,
+    EverVoidCallback? everCallback,
     ErrorVoidCallback? errorCallback,
   }) {
     changeNotifier.addListener(() {
+      if (everCallback != null) {
+        everCallback(changeNotifier, this);
+      }
       if (changeNotifier.loading) {
         Loader.show(context);
       } else {
@@ -25,19 +29,13 @@ class DefaultListenerNotifier {
       }
       if (changeNotifier.hasError) {
         if (errorCallback != null) {
-          errorCallback(
-            changeNotifier,
-            this,
-          );
+          errorCallback(changeNotifier, this);
         }
         Messages.of(context).showError(
           changeNotifier.error ?? 'Erro interno',
         );
       } else if (changeNotifier.isSuccess) {
-        successCallback(
-          changeNotifier,
-          this,
-        );
+        successCallback(changeNotifier, this);
       }
     });
   }
@@ -52,6 +50,11 @@ typedef SuccessVoidCallback = void Function(
   DefaultListenerNotifier listenerInstance,
 );
 typedef ErrorVoidCallback = void Function(
+  DefaultChangeNotifier notifier,
+  DefaultListenerNotifier listenerInstance,
+);
+
+typedef EverVoidCallback = void Function(
   DefaultChangeNotifier notifier,
   DefaultListenerNotifier listenerInstance,
 );
