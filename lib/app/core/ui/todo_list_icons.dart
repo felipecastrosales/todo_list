@@ -11,7 +11,7 @@
 ///      fonts:
 ///       - asset: fonts/TodoListIcons.ttf
 ///
-/// 
+///
 /// * Font Awesome 4, Copyright (C) 2016 by Dave Gandy
 ///         Author:    Dave Gandy
 ///         License:   SIL ()
@@ -29,8 +29,29 @@ class TodoListIcons {
   static const _kFontFam = 'TodoListIcons';
   static const String? _kFontPkg = null;
 
-  static const IconData heart = IconData(0xe800, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData heart_empty = IconData(0xe801, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData eye = IconData(0xf06e, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData eye_slash = IconData(0xf070, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData heart_empty = IconData(
+    0xe800,
+    fontFamily: _kFontFam,
+    fontPackage: _kFontPkg,
+  );
+  static const IconData heart_1 = IconData(
+    0xe801,
+    fontFamily: _kFontFam,
+    fontPackage: _kFontPkg,
+  );
+  static const IconData eye = IconData(
+    0xf06e,
+    fontFamily: _kFontFam,
+    fontPackage: _kFontPkg,
+  );
+  static const IconData eye_slash = IconData(
+    0xf070,
+    fontFamily: _kFontFam,
+    fontPackage: _kFontPkg,
+  );
+  static const IconData filter = IconData(
+    0xf0b0,
+    fontFamily: _kFontFam,
+    fontPackage: _kFontPkg,
+  );
 }
