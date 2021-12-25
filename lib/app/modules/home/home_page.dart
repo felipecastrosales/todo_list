@@ -5,6 +5,8 @@ import 'package:todo_list/app/core/ui/todo_list_icons.dart';
 import 'widgets/home_drawer.dart';
 import 'widgets/home_filters.dart';
 import 'widgets/home_header.dart';
+import 'widgets/home_tasks.dart';
+import 'widgets/home_week.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -14,7 +16,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(color: context.primaryColor),
-        backgroundColor: Colors.transparent,
+        backgroundColor: const Color(0XFFFAFBFE),
         elevation: 0,
         actions: [
           PopupMenuButton(
@@ -45,6 +47,8 @@ class HomePage extends StatelessWidget {
                     children: const [
                       HomeHeader(),
                       HomeFilters(),
+                      HomeWeek(),
+                      HomeTasks(),
                     ],
                   ),
                 ),
