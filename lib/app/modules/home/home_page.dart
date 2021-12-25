@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:todo_list/app/core/ui/theme_extensions.dart';
 import 'package:todo_list/app/core/ui/todo_list_icons.dart';
+import 'package:todo_list/app/modules/tasks/tasks_module.dart';
 import 'widgets/home_drawer.dart';
 import 'widgets/home_filters.dart';
 import 'widgets/home_header.dart';
@@ -10,6 +11,28 @@ import 'widgets/home_week.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
+
+  void _goToCreateTask(BuildContext context) {
+    Navigator.of(context).push(
+      PageRouteBuilder(
+        transitionDuration: const Duration(milliseconds: 400),
+        pageBuilder: (context, animation, secondaryAnimation) {
+          return TasksModule().getPage('/task/create', context);
+        },
+        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+          animation = CurvedAnimation(
+            parent: animation,
+            curve: Curves.easeInQuad,
+          );
+          return ScaleTransition(
+            scale: animation,
+            alignment: Alignment.bottomRight,
+            child: child,
+          );
+        },
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -55,6 +78,13 @@ class HomePage extends StatelessWidget {
               ),
             ),
           );
+        },
+      ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: context.primaryColor,
+        child: const Icon(Icons.add),
+        onPressed: () {
+          _goToCreateTask(context);
         },
       ),
     );

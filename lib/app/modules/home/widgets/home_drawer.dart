@@ -33,7 +33,6 @@ class HomeDrawer extends StatelessWidget {
                       radius: 30,
                     );
                   },
-                  child: CircleAvatar(),
                 ),
                 Expanded(
                   child: Padding(
