@@ -43,7 +43,7 @@ class _HomePageState extends State<HomePage> {
     widget._homeController.loadTotalTasks();
   }
 
-  void _goToCreateTask(BuildContext context) async {
+  Future<void> _goToCreateTask(BuildContext context) async {
     await Navigator.of(context).push(
       PageRouteBuilder(
         transitionDuration: const Duration(milliseconds: 400),
