@@ -41,8 +41,7 @@ class TasksRepositoryImpl extends TasksRepository {
       '''
         select * 
         from todo 
-        where implementing_parameters_filter_home between ? and ?
-        order by date_hour
+        where date_hour between ? and ?
       ''',
       [
         startFilter.toIso8601String(),

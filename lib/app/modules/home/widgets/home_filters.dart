@@ -28,35 +28,32 @@ class HomeFilters extends StatelessWidget {
               TodoCardFilter(
                 label: 'HOJE',
                 taskFilter: TaskFilterEnum.today,
-                totalTasks: TotalTasksModel(
-                  totalTasks: 8,
-                  totalTasksFinish: 5,
+                totalTasks: context.select<HomeController, TotalTasksModel?>(
+                  (controller) => controller.todayTotalTasks,
                 ),
                 selected: context.select<HomeController, TaskFilterEnum>(
-                  (value) => value.filterSelected,
-                ) == TaskFilterEnum.today,
+                        (value) => value.filterSelected) ==
+                    TaskFilterEnum.today,
               ),
               TodoCardFilter(
                 label: 'AMANHÃ',
                 taskFilter: TaskFilterEnum.tomorrow,
-                totalTasks: TotalTasksModel(
-                  totalTasks: 10,
-                  totalTasksFinish: 4,
+                totalTasks: context.select<HomeController, TotalTasksModel?>(
+                  (controller) => controller.tomorrowTotalTasks,
                 ),
                 selected: context.select<HomeController, TaskFilterEnum>(
-                  (value) => value.filterSelected,
-                ) == TaskFilterEnum.tomorrow,
+                        (value) => value.filterSelected) ==
+                    TaskFilterEnum.tomorrow,
               ),
               TodoCardFilter(
                 label: 'SEGUNDA',
                 taskFilter: TaskFilterEnum.week,
-                totalTasks: TotalTasksModel(
-                  totalTasks: 7,
-                  totalTasksFinish: 5,
+                totalTasks: context.select<HomeController, TotalTasksModel?>(
+                  (controller) => controller.weekTotalTasks,
                 ),
                 selected: context.select<HomeController, TaskFilterEnum>(
-                  (value) => value.filterSelected,
-                ) == TaskFilterEnum.week,
+                        (value) => value.filterSelected) ==
+                    TaskFilterEnum.week,
               ),
             ],
           ),
