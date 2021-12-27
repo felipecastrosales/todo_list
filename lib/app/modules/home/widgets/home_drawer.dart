@@ -25,7 +25,8 @@ class HomeDrawer extends StatelessWidget {
               children: [
                 Selector<AuthProvider, String>(
                   selector: (context, authProvider) {
-                    return authProvider.user?.photoURL ?? 'assets/person.png';
+                    return authProvider.user?.photoURL ??
+                        'https://i.imgur.com/aKxC31c.png';
                   },
                   builder: (_, value, __) {
                     return CircleAvatar(
@@ -86,7 +87,6 @@ class HomeDrawer extends StatelessWidget {
                                 .updateDisplayName(nameValue);
                             Loader.hide();
                             Navigator.pop(context);
-                          
                           }
                         },
                       ),

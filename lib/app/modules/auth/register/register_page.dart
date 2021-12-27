@@ -31,14 +31,11 @@ class _RegisterPageState extends State<RegisterPage> {
     );
     defaultListener.listener(
       context: context,
-      successCallback: (
-        notifier,
-        listenerInstance,
-      ) {
+      successCallback: (notifier, listenerInstance) {
         listenerInstance.dispose();
-        Navigator.of(context).pop();
+        // Navigator.of(context).pop(); removed by change in AuthProvider
       },
-      // optional 
+      // optional
       // errorCallback: (
       //   notifier,
       //   listenerInstance,
