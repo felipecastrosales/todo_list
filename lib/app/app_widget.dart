@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'core/database/sqlite_adm_connection.dart';
 import 'core/navigator/todo_list_navigator.dart';
@@ -36,6 +37,13 @@ class _AppWidgetState extends State<AppWidget> {
       title: 'Todo List',
       theme: TodoListUiConfig.theme,
       navigatorKey: TodoListNavigator.navigatorKey,
+      localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ],
+      supportedLocales: const [
+        Locale('pt', 'BR'),
+      ],
       routes: {
         ...AuthModule().routers,
         ...HomeModule().routers,

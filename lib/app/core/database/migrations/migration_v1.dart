@@ -8,7 +8,7 @@ class MigrationV1 implements Migration {
     batch.execute('''
     create table todo(
       id Integer primary key autoincrement,
-      desciption varchar(500) not null,
+      description varchar(500) not null,
       date_hour datetime, 
       finish integer
     )
