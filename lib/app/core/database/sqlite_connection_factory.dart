@@ -20,12 +20,13 @@ class SqliteConnectionFactory {
   }
 
   Future<Database> openConnection() async {
-    final databasePath = await getDatabasesPath();
-    final databasePathFinal = join(databasePath, _DATABASE_NAME);
+    var databasePath = await getDatabasesPath();
+    var databasePathFinal = join(databasePath, _DATABASE_NAME);
     if (_db == null) {
-      await _lock.synchronized(() async {
-        // if (_db == null) { _db = ... }  
-        _db ??= await openDatabase(
+      await _lock.synchronized(
+        () async {
+          // if (_db == null) { _db = ... }
+          _db ??= await openDatabase(
             databasePathFinal,
             version: _VERSION,
             onConfigure: _onConfigure,
@@ -33,7 +34,8 @@ class SqliteConnectionFactory {
             onUpgrade: _onUpgrade,
             onDowngrade: _onDowngrade,
           );
-      });
+        },
+      );
     }
     return _db!;
   }
@@ -56,7 +58,7 @@ class SqliteConnectionFactory {
     batch.commit();
   }
 
-  Future<void> _onUpgrade(Database db, int oldVersion, int newVersion) async {
+  Future<void> _onUpgrade(Database db, int oldVersion, int version) async {
     final batch = db.batch();
     final migrations = SqliteMigrationFactory().getUpgradeMigration(oldVersion);
     for (var migration in migrations) {
@@ -65,7 +67,5 @@ class SqliteConnectionFactory {
     batch.commit();
   }
 
-  Future<void> _onDowngrade(Database db, int oldVersion, int newVersion) async {
-    
-  }
+  Future<void> _onDowngrade(Database db, int oldVersion, int version) async {}
 }

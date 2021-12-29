@@ -7,7 +7,7 @@ import 'package:todo_list/app/core/ui/theme_extensions.dart';
 import 'package:todo_list/app/modules/tasks/tasks_create_controller.dart';
 
 class CalendarButton extends StatelessWidget {
-  final dateFormat = DateFormat('dd/MM/yyyy');
+  final dateFormat = DateFormat('dd/MM/y');
 
   CalendarButton({Key? key}) : super(key: key);
 

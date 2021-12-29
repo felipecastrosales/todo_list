@@ -8,8 +8,8 @@ import 'core/auth/auth_provider.dart';
 import 'core/database/sqlite_connection_factory.dart';
 import 'repositories/user/user_repository.dart';
 import 'repositories/user/user_repository_impl.dart';
-import 'services/user_service.dart';
-import 'services/user_service_impl.dart';
+import 'services/user/user_service.dart';
+import 'services/user/user_service_impl.dart';
 
 class AppModule extends StatelessWidget {
   const AppModule({Key? key}) : super(key: key);

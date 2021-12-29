@@ -22,6 +22,9 @@ class TasksCreatePage extends StatefulWidget {
 }
 
 class _TasksCreatePageState extends State<TasksCreatePage> {
+  final _formKey = GlobalKey<FormState>();
+  final _descriptionTextEditingController = TextEditingController();
+
   @override
   void initState() {
     super.initState();
@@ -41,9 +44,6 @@ class _TasksCreatePageState extends State<TasksCreatePage> {
     super.dispose();
     _descriptionTextEditingController.dispose();
   }
-
-  final _formKey = GlobalKey<FormState>();
-  final _descriptionTextEditingController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {

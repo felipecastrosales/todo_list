@@ -18,22 +18,28 @@ class HomeTasks extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const SizedBox(height: 20),
-          Selector<HomeController, String>(
-            selector: (context, controller) =>
-                controller.filterSelected.description,
-            builder: (context, value, child) {
-              return Text(
-                'TASK\'S $value',
-                style: context.titleStyle,
-              );
-            },
+          Row(
+            children: [
+              Expanded(
+                child: Selector<HomeController, String>(
+                  selector: (context, controller) =>
+                      controller.filterSelected.description,
+                  builder: (context, value, child) {
+                    return Text(
+                      'TASK\'S $value',
+                      style: context.titleStyle,
+                    );
+                  },
+                ),
+              ),
+            ],
           ),
           Column(
             children: context
                 .select<HomeController, List<TaskModel>>(
                     (controller) => controller.filteredTasks)
                 .map(
-                  (task) => Task(model: task),
+                  (t) => Task(model: t),
                 )
                 .toList(),
           ),

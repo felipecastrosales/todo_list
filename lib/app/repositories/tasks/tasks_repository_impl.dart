@@ -2,7 +2,7 @@ import 'package:todo_list/app/core/database/sqlite_connection_factory.dart';
 import 'package:todo_list/app/models/task_model.dart';
 import 'tasks_repository.dart';
 
-class TasksRepositoryImpl extends TasksRepository {
+class TasksRepositoryImpl implements TasksRepository {
   final SqliteConnectionFactory _sqliteConnectionFactory;
 
   TasksRepositoryImpl({
@@ -18,7 +18,7 @@ class TasksRepositoryImpl extends TasksRepository {
         'id': null,
         'description': description,
         'date_hour': date.toIso8601String(),
-        'finish': 0,
+        'finished': 0,
       },
     );
   }
@@ -29,11 +29,17 @@ class TasksRepositoryImpl extends TasksRepository {
       start.year,
       start.month,
       start.day,
+      0,
+      0,
+      0,
     );
     final endFilter = DateTime(
-      start.year,
-      start.month,
-      start.day,
+      end.year,
+      end.month,
+      end.day,
+      23,
+      59,
+      59,
     );
 
     final connection = await _sqliteConnectionFactory.openConnection();
@@ -41,7 +47,8 @@ class TasksRepositoryImpl extends TasksRepository {
       '''
         select * 
         from todo 
-        where date_hour between ? and ?
+        where date_hour between ? and ? 
+        order by date_hour 
       ''',
       [
         startFilter.toIso8601String(),

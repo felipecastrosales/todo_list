@@ -13,9 +13,9 @@ class HomeWeek extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Visibility(
-      visible: context.select<HomeController, bool>(
-        (controller) => controller.filterSelected == TaskFilterEnum.week,
-      ),
+      visible: context.select<HomeController, TaskFilterEnum>(
+              (controller) => controller.filterSelected) ==
+          TaskFilterEnum.week,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -30,12 +30,12 @@ class HomeWeek extends StatelessWidget {
             child: Selector<HomeController, DateTime>(
               selector: (context, controller) =>
                   controller.initialDateOfWeek ?? DateTime.now(),
-              builder: (_, value, __) {
+              builder: (context, initialDateOfWeek, child) {
                 return DatePicker(
-                  value,
+                  initialDateOfWeek,
                   locale: 'pt_BR',
                   height: 2,
-                  initialSelectedDate: value,
+                  initialSelectedDate: initialDateOfWeek,
                   selectionColor: context.primaryColor,
                   selectedTextColor: Colors.white,
                   daysCount: 7,

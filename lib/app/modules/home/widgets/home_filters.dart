@@ -17,7 +17,7 @@ class HomeFilters extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Filters',
+          'FILTROS',
           style: context.titleStyle,
         ),
         const SizedBox(height: 10),
@@ -29,7 +29,7 @@ class HomeFilters extends StatelessWidget {
                 label: 'HOJE',
                 taskFilter: TaskFilterEnum.today,
                 totalTasks: context.select<HomeController, TotalTasksModel?>(
-                  (controller) => controller.todayTotalTasks,
+                  (value) => value.todayTotalTasks,
                 ),
                 selected: context.select<HomeController, TaskFilterEnum>(
                         (value) => value.filterSelected) ==
@@ -46,7 +46,7 @@ class HomeFilters extends StatelessWidget {
                     TaskFilterEnum.tomorrow,
               ),
               TodoCardFilter(
-                label: 'SEGUNDA',
+                label: 'SEMANA',
                 taskFilter: TaskFilterEnum.week,
                 totalTasks: context.select<HomeController, TotalTasksModel?>(
                   (controller) => controller.weekTotalTasks,

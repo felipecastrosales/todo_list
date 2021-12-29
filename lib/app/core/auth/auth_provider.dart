@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:todo_list/app/core/navigator/todo_list_navigator.dart';
-import 'package:todo_list/app/services/user_service.dart';
+import 'package:todo_list/app/services/user/user_service.dart';
 
 class AuthProvider extends ChangeNotifier {
   final FirebaseAuth _firebaseAuth;

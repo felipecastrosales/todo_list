@@ -28,8 +28,8 @@ class TasksCreateController extends DefaultChangeNotifier {
         setError('Data da task não selecionada.');
       }
     } catch (e, s) {
-      print(e);
-      print(s);
+      print('errrrroooo $e');
+      print('errrrroooo $s');
       setError('Erro ao cadastrar task.');
     } finally {
       hideLoading();

@@ -14,6 +14,7 @@ import 'widgets/home_week.dart';
 
 class HomePage extends StatefulWidget {
   final HomeController _homeController;
+
   const HomePage({
     Key? key,
     required HomeController homeController,
@@ -32,7 +33,7 @@ class _HomePageState extends State<HomePage> {
       changeNotifier: widget._homeController,
     ).listener(
       context: context,
-      successCallback: (notifier, listenerInstance) {
+      successCallback: (_, listenerInstance) {
         listenerInstance.dispose();
       },
     );
@@ -40,16 +41,12 @@ class _HomePageState extends State<HomePage> {
       widget._homeController.loadTotalTasks();
       widget._homeController.findTasks(filter: TaskFilterEnum.today);
     });
-    widget._homeController.loadTotalTasks();
   }
 
   Future<void> _goToCreateTask(BuildContext context) async {
     await Navigator.of(context).push(
       PageRouteBuilder(
         transitionDuration: const Duration(milliseconds: 400),
-        pageBuilder: (context, animation, secondaryAnimation) {
-          return TasksModule().getPage('/task/create', context);
-        },
         transitionsBuilder: (context, animation, secondaryAnimation, child) {
           animation = CurvedAnimation(
             parent: animation,
@@ -60,6 +57,9 @@ class _HomePageState extends State<HomePage> {
             alignment: Alignment.bottomRight,
             child: child,
           );
+        },
+        pageBuilder: (context, animation, secondaryAnimation) {
+          return TasksModule().getPage('/task/create', context);
         },
       ),
     );

@@ -22,10 +22,10 @@ class TodoCardFilter extends StatelessWidget {
   }) : super(key: key);
 
   double _getPercentFinish() {
-    final total = totalTasks?.totalTasks ?? 0;
-    final finish = totalTasks?.totalTasksFinish ?? 0;
+    final total = totalTasks?.totalTasks ?? 0.0;
+    final finish = totalTasks?.totalTasksFinish ?? 0.0;
     if (total == 0) {
-      return 0;
+      return 0.0;
     }
     final percent = (finish * 100) / total;
     return percent / 100;
@@ -34,8 +34,8 @@ class TodoCardFilter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      borderRadius: BorderRadius.circular(30),
       onTap: () => context.read<HomeController>().findTasks(filter: taskFilter),
+      borderRadius: BorderRadius.circular(30),
       child: Container(
         constraints: const BoxConstraints(
           minHeight: 120,

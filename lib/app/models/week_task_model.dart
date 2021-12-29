@@ -1,4 +1,3 @@
-
 import 'task_model.dart';
 
 class WeekTaskModel {

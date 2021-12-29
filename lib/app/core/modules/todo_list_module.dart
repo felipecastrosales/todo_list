@@ -32,8 +32,7 @@ abstract class TodoListModule {
         page: widgetBuilder,
         bindings: _bindings,
       );
-    } else {
-      throw Exception('Page not found');
     }
+    throw Exception();
   }
 }
