@@ -1,3 +1,4 @@
+import 'dart:developer' as developer;
 import 'package:flutter/material.dart';
 
 import 'package:todo_list/app/core/notifier/default_listener_notifier.dart';
@@ -68,6 +69,8 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final controller = widget._homeController;
+
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(color: context.primaryColor),
@@ -76,11 +79,18 @@ class _HomePageState extends State<HomePage> {
         actions: [
           PopupMenuButton(
             icon: const Icon(TodoListIcons.filter),
-            itemBuilder: (_) => [
-              const PopupMenuItem<bool>(
-                child: Text('Mostrar tarefas concluídas'),
-              ),
-            ],
+            onSelected: (filter) => controller.showOrHideFinishingTasks(),
+            itemBuilder: (_) {
+              developer.log('botão');
+              return [
+                PopupMenuItem<bool>(
+                  value: true,
+                  child: Text(
+                    controller.showTasks(),
+                  ),
+                ),
+              ];
+            },
           ),
         ],
       ),

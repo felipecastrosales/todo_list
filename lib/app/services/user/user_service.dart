@@ -1,5 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 
+import 'package:todo_list/app/models/task_model.dart';
+
 abstract class UserService {
   Future<User?> register(
     String email,
