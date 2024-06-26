@@ -8,18 +8,18 @@ import 'package:todo_list/app/models/total_tasks_model.dart';
 import 'package:todo_list/app/modules/home/home_controller.dart';
 
 class TodoCardFilter extends StatelessWidget {
-  final String label;
-  final TaskFilterEnum taskFilter;
-  final TotalTasksModel? totalTasks;
-  final bool selected;
-
   const TodoCardFilter({
-    Key? key,
+    super.key,
     required this.label,
     required this.taskFilter,
     this.totalTasks,
     required this.selected,
-  }) : super(key: key);
+  });
+
+  final String label;
+  final TaskFilterEnum taskFilter;
+  final TotalTasksModel? totalTasks;
+  final bool selected;
 
   double _getPercentFinish() {
     final total = totalTasks?.totalTasks ?? 0.0;

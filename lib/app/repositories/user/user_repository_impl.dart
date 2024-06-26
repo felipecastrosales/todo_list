@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/services.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
@@ -24,9 +26,10 @@ class UserRepositoryImpl implements UserRepository {
       );
       return userCredential.user;
     } on FirebaseAuthException catch (e, s) {
-      print(e);
-      print(s);
+      log('[register] | FirebaseAuthException |', error: e, stackTrace: s);
       if (e.code == 'email-already-in-use') {
+        // final loginTypes =
+        //     await _firebaseAuth.fetchSignInMethodsForEmail(email);
         final loginTypes =
             await _firebaseAuth.fetchSignInMethodsForEmail(email);
         if (loginTypes.contains('password')) {
@@ -58,14 +61,12 @@ class UserRepositoryImpl implements UserRepository {
       );
       return userCredential.user;
     } on PlatformException catch (e, s) {
-      print(e);
-      print(s);
+      log('[login] | PlatformException |', error: e, stackTrace: s);
       throw AuthException(
         message: e.message ?? 'Erro ao realizar login.',
       );
     } on FirebaseAuthException catch (e, s) {
-      print(e);
-      print(s);
+      log('[login] | FirebaseAuthException |', error: e, stackTrace: s);
       if (e.code == 'wrong-password') {
         throw AuthException(
           message: 'E-mail ou senha inválidos.',
@@ -93,8 +94,7 @@ class UserRepositoryImpl implements UserRepository {
         );
       }
     } on PlatformException catch (e, s) {
-      print(e);
-      print(s);
+      log('[forgotPassword] | PlatformException |', error: e, stackTrace: s);
       throw AuthException(
         message: 'Erro ao realizar recuperação de senha.',
       );
@@ -127,8 +127,7 @@ class UserRepositoryImpl implements UserRepository {
         }
       }
     } on FirebaseAuthException catch (e, s) {
-      print(e);
-      print(s);
+      log('[googleLogin] | FirebaseAuthException |', error: e, stackTrace: s);
       if (e.code == 'account-exists-with-different-credential') {
         throw AuthException(
           message: '''
@@ -142,6 +141,7 @@ class UserRepositoryImpl implements UserRepository {
         );
       }
     }
+    return null;
   }
 
   @override

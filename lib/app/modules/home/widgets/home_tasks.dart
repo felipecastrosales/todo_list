@@ -9,7 +9,7 @@ import 'package:todo_list/app/modules/home/home_controller.dart';
 import 'task.dart';
 
 class HomeTasks extends StatelessWidget {
-  const HomeTasks({Key? key}) : super(key: key);
+  const HomeTasks({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -10,7 +10,7 @@ import 'modules/splash/splash_page.dart';
 import 'modules/tasks/tasks_module.dart';
 
 class AppWidget extends StatefulWidget {
-  const AppWidget({Key? key}) : super(key: key);
+  const AppWidget({super.key});
 
   @override
   State<AppWidget> createState() => _AppWidgetState();
@@ -22,12 +22,12 @@ class _AppWidgetState extends State<AppWidget> {
   @override
   initState() {
     super.initState();
-    WidgetsBinding.instance?.addObserver(sqliteAdmConnection);
+    WidgetsBinding.instance.addObserver(sqliteAdmConnection);
   }
 
   @override
   dispose() {
-    WidgetsBinding.instance?.removeObserver(sqliteAdmConnection);
+    WidgetsBinding.instance.removeObserver(sqliteAdmConnection);
     super.dispose();
   }
 
@@ -40,6 +40,7 @@ class _AppWidgetState extends State<AppWidget> {
       localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
       ],
       supportedLocales: const [
         Locale('pt', 'BR'),

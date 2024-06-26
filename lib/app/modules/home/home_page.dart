@@ -14,13 +14,12 @@ import 'widgets/home_tasks.dart';
 import 'widgets/home_week.dart';
 
 class HomePage extends StatefulWidget {
-  final HomeController _homeController;
-
   const HomePage({
-    Key? key,
+    super.key,
     required HomeController homeController,
-  })  : _homeController = homeController,
-        super(key: key);
+  }) : _homeController = homeController;
+
+  final HomeController _homeController;
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -38,7 +37,7 @@ class _HomePageState extends State<HomePage> {
         listenerInstance.dispose();
       },
     );
-    WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       widget._homeController.loadTotalTasks();
       widget._homeController.findTasks(filter: TaskFilterEnum.today);
     });
@@ -95,7 +94,7 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       backgroundColor: const Color(0XFFFAFBFE),
-      drawer: HomeDrawer(),
+      drawer: const HomeDrawer(),
       body: LayoutBuilder(
         builder: (context, constraints) {
           return SingleChildScrollView(
@@ -104,12 +103,12 @@ class _HomePageState extends State<HomePage> {
                 minHeight: constraints.maxHeight,
                 minWidth: constraints.maxWidth,
               ),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20),
                 child: IntrinsicHeight(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
-                    children: const [
+                    children: [
                       HomeHeader(),
                       HomeFilters(),
                       HomeWeek(),

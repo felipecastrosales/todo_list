@@ -8,7 +8,7 @@ import 'package:todo_list/app/models/task_filter_enum.dart';
 import 'package:todo_list/app/modules/home/home_controller.dart';
 
 class HomeWeek extends StatelessWidget {
-  const HomeWeek({Key? key}) : super(key: key);
+  const HomeWeek({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +33,6 @@ class HomeWeek extends StatelessWidget {
               builder: (context, initialDateOfWeek, child) {
                 return DatePicker(
                   initialDateOfWeek,
-                  locale: 'pt_BR',
                   height: 2,
                   initialSelectedDate: initialDateOfWeek,
                   selectionColor: context.primaryColor,

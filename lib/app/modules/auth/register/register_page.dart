@@ -11,7 +11,7 @@ import 'package:todo_list/app/core/widgets/todo_list_logo.dart';
 import 'register_controller.dart';
 
 class RegisterPage extends StatefulWidget {
-  const RegisterPage({Key? key}) : super(key: key);
+  const RegisterPage({super.key});
 
   @override
   State<RegisterPage> createState() => _RegisterPageState();
@@ -114,8 +114,8 @@ class _RegisterPageState extends State<RegisterPage> {
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.5,
             child: const FittedBox(
-              child: TodoListLogo(size: 100),
               fit: BoxFit.fitHeight,
+              child: TodoListLogo(size: 100),
             ),
           ),
           Padding(
@@ -171,10 +171,6 @@ class _RegisterPageState extends State<RegisterPage> {
                   Align(
                     alignment: Alignment.bottomRight,
                     child: ElevatedButton(
-                      child: const Padding(
-                        padding: EdgeInsets.all(10),
-                        child: Text('Salvar'),
-                      ),
                       onPressed: () {
                         final formValid =
                             _formKey.currentState?.validate() ?? false;
@@ -191,6 +187,10 @@ class _RegisterPageState extends State<RegisterPage> {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20),
                         ),
+                      ),
+                      child: const Padding(
+                        padding: EdgeInsets.all(10),
+                        child: Text('Salvar'),
                       ),
                     ),
                   ),

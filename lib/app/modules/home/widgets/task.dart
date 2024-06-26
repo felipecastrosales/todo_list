@@ -7,12 +7,13 @@ import 'package:todo_list/app/models/task_model.dart';
 import 'package:todo_list/app/modules/home/home_controller.dart';
 
 class Task extends StatelessWidget {
+  Task({
+    super.key,
+    required this.model,
+  });
+
   final TaskModel model;
   final dateFormat = DateFormat('dd/MM/y');
-  Task({
-    Key? key,
-    required this.model,
-  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

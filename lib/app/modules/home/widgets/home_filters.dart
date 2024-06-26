@@ -9,7 +9,7 @@ import 'package:todo_list/app/modules/home/home_controller.dart';
 import 'todo_card_filter.dart';
 
 class HomeFilters extends StatelessWidget {
-  const HomeFilters({Key? key}) : super(key: key);
+  const HomeFilters({super.key});
 
   @override
   Widget build(BuildContext context) {

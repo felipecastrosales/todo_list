@@ -12,10 +12,9 @@ class TasksCreatePage extends StatefulWidget {
   final TasksCreateController _controller;
 
   const TasksCreatePage({
-    Key? key,
+    super.key,
     required TasksCreateController controller,
-  })  : _controller = controller,
-        super(key: key);
+  }) : _controller = controller;
 
   @override
   State<TasksCreatePage> createState() => _TasksCreatePageState();
@@ -83,7 +82,7 @@ class _TasksCreatePageState extends State<TasksCreatePage> {
                 validator: Validatorless.required('Descrição obrigatória'),
               ),
               const SizedBox(height: 10),
-              CalendarButton(),
+              const CalendarButton(),
             ],
           ),
         ),
