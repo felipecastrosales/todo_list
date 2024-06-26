@@ -103,18 +103,15 @@ class _HomePageState extends State<HomePage> {
                 minHeight: constraints.maxHeight,
                 minWidth: constraints.maxWidth,
               ),
-              child: const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20),
-                child: IntrinsicHeight(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      HomeHeader(),
-                      HomeFilters(),
-                      HomeWeek(),
-                      HomeTasks(),
-                    ],
-                  ),
+              child: const IntrinsicHeight(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    HomeHeader(),
+                    HomeFilters(),
+                    HomeWeek(),
+                    HomeTasks(),
+                  ],
                 ),
               ),
             ),
@@ -123,7 +120,10 @@ class _HomePageState extends State<HomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: context.primaryColor,
-        child: const Icon(Icons.add),
+        child: const Icon(
+          Icons.add,
+          color: Colors.white,
+        ),
         onPressed: () {
           _goToCreateTask(context);
         },

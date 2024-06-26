@@ -6,13 +6,18 @@ class TodoListLogo extends StatelessWidget {
   const TodoListLogo({
     super.key,
     required this.size,
+    this.fontSize,
   });
 
   final double size;
+  final double? fontSize;
 
   @override
   Widget build(BuildContext context) {
+    final titleLarge = context.textTheme.titleLarge;
+
     return Column(
+      mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Image.asset(
@@ -21,7 +26,9 @@ class TodoListLogo extends StatelessWidget {
         ),
         Text(
           'Todo List',
-          style: context.textTheme.titleLarge,
+          style: fontSize != null
+              ? titleLarge?.copyWith(fontSize: fontSize)
+              : titleLarge,
         ),
       ],
     );

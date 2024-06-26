@@ -33,19 +33,18 @@ class TodoCardFilter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final borderRadius = BorderRadius.circular(16);
+
     return InkWell(
       onTap: () => context.read<HomeController>().findTasks(filter: taskFilter),
-      borderRadius: BorderRadius.circular(30),
+      borderRadius: borderRadius,
       child: Container(
-        constraints: const BoxConstraints(
-          minHeight: 120,
-          maxWidth: 150,
-        ),
-        margin: const EdgeInsets.only(right: 10),
+        height: 120,
+        width: 150,
         padding: const EdgeInsets.all(20),
         decoration: BoxDecoration(
           color: selected ? context.primaryColor : Colors.white,
-          borderRadius: BorderRadius.circular(30),
+          borderRadius: borderRadius,
           border: Border.all(
             width: 1,
             color: Colors.grey.withOpacity(.8),
@@ -69,6 +68,7 @@ class TodoCardFilter extends StatelessWidget {
                 color: selected ? Colors.white : Colors.black,
               ),
             ),
+            const Spacer(),
             TweenAnimationBuilder<double>(
               tween: Tween(
                 begin: 0.0,

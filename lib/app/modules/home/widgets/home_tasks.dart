@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
+import 'package:todo_list/app/core/ui/app_constants.dart';
 
 import 'package:todo_list/app/core/ui/theme_extensions.dart';
 import 'package:todo_list/app/models/task_filter_enum.dart';
@@ -20,16 +21,19 @@ class HomeTasks extends StatelessWidget {
           const SizedBox(height: 20),
           Row(
             children: [
-              Expanded(
-                child: Selector<HomeController, String>(
-                  selector: (context, controller) =>
-                      controller.filterSelected.description,
-                  builder: (context, value, child) {
-                    return Text(
-                      'TASK\'S $value',
-                      style: context.titleStyle,
-                    );
-                  },
+              Padding(
+                padding: AppConstants.defaultComponentPadding,
+                child: Expanded(
+                  child: Selector<HomeController, String>(
+                    selector: (context, controller) =>
+                        controller.filterSelected.description,
+                    builder: (context, value, child) {
+                      return Text(
+                        'TASK\'S $value',
+                        style: context.titleStyle,
+                      );
+                    },
+                  ),
                 ),
               ),
             ],

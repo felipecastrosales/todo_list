@@ -11,6 +11,7 @@ class TodoListField extends StatelessWidget {
     this.suffixIconButton,
     this.obscureText = false,
     this.focusNode,
+    this.keyboardType,
   })  : assert(
           obscureText == true ? suffixIconButton == null : true,
           'Obscure Text não pode ser enviado junto com suffixIconButton',
@@ -24,6 +25,23 @@ class TodoListField extends StatelessWidget {
   final TextEditingController? controller;
   final FormFieldValidator<String>? validator;
   final FocusNode? focusNode;
+  final TextInputType? keyboardType;
+
+  factory TodoListField.fromPassword({
+    TextEditingController? controller,
+    FormFieldValidator<String>? validator,
+    FocusNode? focusNode,
+    String label = 'Senha',
+  }) {
+    return TodoListField(
+      controller: controller,
+      validator: validator,
+      focusNode: focusNode,
+      label: label,
+      obscureText: true,
+      keyboardType: TextInputType.visiblePassword,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +52,7 @@ class TodoListField extends StatelessWidget {
           controller: controller,
           validator: validator,
           focusNode: focusNode,
+          keyboardType: keyboardType,
           decoration: InputDecoration(
             labelText: label,
             labelStyle: const TextStyle(

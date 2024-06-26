@@ -91,7 +91,10 @@ class _TasksCreatePageState extends State<TasksCreatePage> {
         backgroundColor: context.primaryColor,
         label: const Text(
           'Salvar task',
-          style: TextStyle(fontWeight: FontWeight.bold),
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ),
         ),
         onPressed: () {
           final formValid = _formKey.currentState?.validate() ?? false;

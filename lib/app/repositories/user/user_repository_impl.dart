@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'dart:developer';
 
 import 'package:flutter/services.dart';
@@ -28,8 +30,6 @@ class UserRepositoryImpl implements UserRepository {
     } on FirebaseAuthException catch (e, s) {
       log('[register] | FirebaseAuthException |', error: e, stackTrace: s);
       if (e.code == 'email-already-in-use') {
-        // final loginTypes =
-        //     await _firebaseAuth.fetchSignInMethodsForEmail(email);
         final loginTypes =
             await _firebaseAuth.fetchSignInMethodsForEmail(email);
         if (loginTypes.contains('password')) {

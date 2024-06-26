@@ -9,4 +9,6 @@ extension ThemeExtension on BuildContext {
         fontWeight: FontWeight.bold,
         color: Colors.grey,
       );
+
+  double get statusBarSize => MediaQuery.paddingOf(this).top;
 }
