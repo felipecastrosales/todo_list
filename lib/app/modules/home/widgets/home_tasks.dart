@@ -23,29 +23,26 @@ class HomeTasks extends StatelessWidget {
             children: [
               Padding(
                 padding: AppConstants.defaultComponentPadding,
-                child: Expanded(
-                  child: Selector<HomeController, String>(
-                    selector: (context, controller) =>
-                        controller.filterSelected.description,
-                    builder: (context, value, child) {
-                      return Text(
-                        'TASK\'S $value',
-                        style: context.titleStyle,
-                      );
-                    },
-                  ),
+                child: Selector<HomeController, String>(
+                  selector: (context, controller) =>
+                      controller.filterSelected.description,
+                  builder: (context, value, child) {
+                    return Text(
+                      'TASK\'S $value',
+                      style: context.titleStyle,
+                    );
+                  },
                 ),
               ),
             ],
           ),
-          Column(
-            children: context
-                .select<HomeController, List<TaskModel>>(
-                    (controller) => controller.filteredTasks)
-                .map(
-                  (t) => Task(model: t),
-                )
-                .toList(),
+          Selector<HomeController, List<TaskModel>>(
+            selector: (context, controller) => controller.filteredTasks,
+            builder: (context, tasks, child) {
+              return Column(
+                children: tasks.map((t) => Task(model: t)).toList(),
+              );
+            },
           ),
         ],
       ),
