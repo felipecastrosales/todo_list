@@ -9,11 +9,12 @@ import 'package:todo_list/app/core/ui/theme_extensions.dart';
 import 'package:todo_list/app/services/user/user_service.dart';
 
 class HomeDrawer extends StatelessWidget {
-  final name = ValueNotifier<String>('');
-  HomeDrawer({Key? key}) : super(key: key);
+  const HomeDrawer({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final name = ValueNotifier<String>('');
+
     return Drawer(
       child: ListView(
         children: [
@@ -46,7 +47,7 @@ class HomeDrawer extends StatelessWidget {
                       builder: (_, value, __) {
                         return Text(
                           value,
-                          style: context.textTheme.subtitle2,
+                          style: context.textTheme.titleSmall,
                         );
                       },
                     ),

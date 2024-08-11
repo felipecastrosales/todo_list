@@ -5,13 +5,15 @@ import 'package:provider/provider.dart';
 
 import 'package:todo_list/app/core/notifier/default_listener_notifier.dart';
 import 'package:todo_list/app/core/ui/messages.dart';
+import 'package:todo_list/app/core/ui/theme_extensions.dart';
+import 'package:todo_list/app/core/widgets/todo_list_button.dart';
 import 'package:todo_list/app/core/widgets/todo_list_field.dart';
 import 'package:todo_list/app/core/widgets/todo_list_logo.dart';
 import 'package:validatorless/validatorless.dart';
 import 'login_controller.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+  const LoginPage({super.key});
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -38,7 +40,7 @@ class _LoginPageState extends State<LoginPage> {
         }
       },
       successCallback: (notifier, listenerInstance) {
-        print('Login success');
+        debugPrint('successCallback');
       },
     );
   }
@@ -59,8 +61,8 @@ class _LoginPageState extends State<LoginPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    const SizedBox(height: 10),
-                    const TodoListLogo(size: 150),
+                    SizedBox(height: context.statusBarSize + 24),
+                    const TodoListLogo(size: 180),
                     Padding(
                       padding: const EdgeInsets.symmetric(
                         vertical: 20,
@@ -116,11 +118,8 @@ class _LoginPageState extends State<LoginPage> {
                                     }
                                   },
                                 ),
-                                ElevatedButton(
-                                  child: const Padding(
-                                    padding: EdgeInsets.all(10),
-                                    child: Text('Login'),
-                                  ),
+                                TodoListButton(
+                                  title: 'Login',
                                   onPressed: () {
                                     final formValid =
                                         _formKey.currentState?.validate() ??
@@ -134,11 +133,6 @@ class _LoginPageState extends State<LoginPage> {
                                           );
                                     }
                                   },
-                                  style: ElevatedButton.styleFrom(
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(20),
-                                    ),
-                                  ),
                                 ),
                               ],
                             ),
@@ -163,7 +157,7 @@ class _LoginPageState extends State<LoginPage> {
                             const SizedBox(height: 20),
                             SignInButton(
                               Buttons.Google,
-                              text: 'Continue com o Google',
+                              text: 'Entrar com o Google',
                               padding: const EdgeInsets.all(5),
                               shape: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(20),

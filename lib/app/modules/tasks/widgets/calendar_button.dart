@@ -7,12 +7,12 @@ import 'package:todo_list/app/core/ui/theme_extensions.dart';
 import 'package:todo_list/app/modules/tasks/tasks_create_controller.dart';
 
 class CalendarButton extends StatelessWidget {
-  final dateFormat = DateFormat('dd/MM/y');
-
-  CalendarButton({Key? key}) : super(key: key);
+  const CalendarButton({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final dateFormat = DateFormat('dd/MM/y');
+
     return InkWell(
       onTap: () async {
         var lastDate = DateTime.now();
@@ -26,6 +26,10 @@ class CalendarButton extends StatelessWidget {
           firstDate: DateTime(2000),
           lastDate: lastDate,
         );
+
+        if (!context.mounted) {
+          return;
+        }
 
         context.read<TasksCreateController>().selectedDate = selectedDate;
       },

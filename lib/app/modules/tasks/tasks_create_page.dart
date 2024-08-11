@@ -12,10 +12,9 @@ class TasksCreatePage extends StatefulWidget {
   final TasksCreateController _controller;
 
   const TasksCreatePage({
-    Key? key,
+    super.key,
     required TasksCreateController controller,
-  })  : _controller = controller,
-        super(key: key);
+  }) : _controller = controller;
 
   @override
   State<TasksCreatePage> createState() => _TasksCreatePageState();
@@ -83,7 +82,7 @@ class _TasksCreatePageState extends State<TasksCreatePage> {
                 validator: Validatorless.required('Descrição obrigatória'),
               ),
               const SizedBox(height: 10),
-              CalendarButton(),
+              const CalendarButton(),
             ],
           ),
         ),
@@ -92,7 +91,10 @@ class _TasksCreatePageState extends State<TasksCreatePage> {
         backgroundColor: context.primaryColor,
         label: const Text(
           'Salvar task',
-          style: TextStyle(fontWeight: FontWeight.bold),
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ),
         ),
         onPressed: () {
           final formValid = _formKey.currentState?.validate() ?? false;

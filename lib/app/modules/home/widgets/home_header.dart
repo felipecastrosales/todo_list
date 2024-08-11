@@ -6,7 +6,7 @@ import 'package:todo_list/app/core/auth/auth_provider.dart';
 import 'package:todo_list/app/core/ui/theme_extensions.dart';
 
 class HomeHeader extends StatelessWidget {
-  const HomeHeader({Key? key}) : super(key: key);
+  const HomeHeader({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,7 @@ class HomeHeader extends StatelessWidget {
         builder: (_, value, __) {
           return Text(
             'E aí, ${value.trim()}!',
-            style: context.textTheme.headline5
+            style: context.textTheme.headlineSmall
                 ?.copyWith(fontWeight: FontWeight.bold),
           );
         },

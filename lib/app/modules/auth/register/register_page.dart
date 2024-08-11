@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
-
 import 'package:provider/provider.dart';
-import 'package:todo_list/app/core/notifier/default_listener_notifier.dart';
 import 'package:validatorless/validatorless.dart';
 
-import 'package:todo_list/app/core/validators/validators.dart';
+import 'package:todo_list/app/core/notifier/default_listener_notifier.dart';
 import 'package:todo_list/app/core/ui/theme_extensions.dart';
+import 'package:todo_list/app/core/validators/validators.dart';
+import 'package:todo_list/app/core/widgets/todo_list_button.dart';
 import 'package:todo_list/app/core/widgets/todo_list_field.dart';
 import 'package:todo_list/app/core/widgets/todo_list_logo.dart';
+
 import 'register_controller.dart';
 
 class RegisterPage extends StatefulWidget {
-  const RegisterPage({Key? key}) : super(key: key);
+  const RegisterPage({super.key});
 
   @override
   State<RegisterPage> createState() => _RegisterPageState();
@@ -65,7 +66,6 @@ class _RegisterPageState extends State<RegisterPage> {
     _emailController.dispose();
     _passwordController.dispose();
     _confirmPasswordController.dispose();
-    context.read<RegisterController>().removeListener(() {});
     super.dispose();
   }
 
@@ -111,11 +111,11 @@ class _RegisterPageState extends State<RegisterPage> {
       ),
       body: ListView(
         children: [
-          SizedBox(
-            height: MediaQuery.of(context).size.height * 0.5,
-            child: const FittedBox(
-              child: TodoListLogo(size: 100),
-              fit: BoxFit.fitHeight,
+          const Padding(
+            padding: EdgeInsets.all(24),
+            child: TodoListLogo(
+              size: 120,
+              fontSize: 24,
             ),
           ),
           Padding(
@@ -130,6 +130,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   TodoListField(
                     label: 'E-mail',
                     controller: _emailController,
+                    keyboardType: TextInputType.emailAddress,
                     validator: Validatorless.multiple(
                       [
                         Validatorless.required('E-mail obrigatório.'),
@@ -137,10 +138,8 @@ class _RegisterPageState extends State<RegisterPage> {
                       ],
                     ),
                   ),
-                  const SizedBox(height: 20),
-                  TodoListField(
-                    label: 'Senha',
-                    obscureText: true,
+                  const SizedBox(height: 24),
+                  TodoListField.fromPassword(
                     controller: _passwordController,
                     validator: Validatorless.multiple(
                       [
@@ -152,10 +151,9 @@ class _RegisterPageState extends State<RegisterPage> {
                       ],
                     ),
                   ),
-                  const SizedBox(height: 20),
-                  TodoListField(
+                  const SizedBox(height: 24),
+                  TodoListField.fromPassword(
                     label: 'Confirmar Senha',
-                    obscureText: true,
                     controller: _confirmPasswordController,
                     validator: Validatorless.multiple(
                       [
@@ -167,14 +165,11 @@ class _RegisterPageState extends State<RegisterPage> {
                       ],
                     ),
                   ),
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 24),
                   Align(
                     alignment: Alignment.bottomRight,
-                    child: ElevatedButton(
-                      child: const Padding(
-                        padding: EdgeInsets.all(10),
-                        child: Text('Salvar'),
-                      ),
+                    child: TodoListButton(
+                      title: 'Salvar',
                       onPressed: () {
                         final formValid =
                             _formKey.currentState?.validate() ?? false;
@@ -187,11 +182,6 @@ class _RegisterPageState extends State<RegisterPage> {
                               );
                         }
                       },
-                      style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                      ),
                     ),
                   ),
                 ],

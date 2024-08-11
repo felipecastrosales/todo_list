@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:todo_list/app/core/notifier/default_change_notifier.dart';
 import 'package:todo_list/app/services/tasks/tasks_service.dart';
 
@@ -28,8 +30,7 @@ class TasksCreateController extends DefaultChangeNotifier {
         setError('Data da task não selecionada.');
       }
     } catch (e, s) {
-      print('errrrroooo $e');
-      print('errrrroooo $s');
+      log('[save] error', error: e, stackTrace: s);
       setError('Erro ao cadastrar task.');
     } finally {
       hideLoading();

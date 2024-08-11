@@ -4,7 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:provider/provider.dart';
 
 import 'app_widget.dart';
-import 'core/auth/auth_provider.dart';
+import 'core/auth/auth_provider.dart' as ap;
 import 'core/database/sqlite_connection_factory.dart';
 import 'repositories/user/user_repository.dart';
 import 'repositories/user/user_repository_impl.dart';
@@ -12,7 +12,7 @@ import 'services/user/user_service.dart';
 import 'services/user/user_service_impl.dart';
 
 class AppModule extends StatelessWidget {
-  const AppModule({Key? key}) : super(key: key);
+  const AppModule({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +34,7 @@ class AppModule extends StatelessWidget {
           ),
         ),
         ChangeNotifierProvider(
-          create: (context) => AuthProvider(
+          create: (context) => ap.AuthProvider(
             firebaseAuth: context.read(),
             userService: context.read(),
           )..loadListener(),

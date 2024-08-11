@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
+import 'package:todo_list/app/core/ui/app_constants.dart';
 
 import 'package:todo_list/app/core/ui/theme_extensions.dart';
 import 'package:todo_list/app/models/task_filter_enum.dart';
@@ -9,7 +10,7 @@ import 'package:todo_list/app/modules/home/home_controller.dart';
 import 'task.dart';
 
 class HomeTasks extends StatelessWidget {
-  const HomeTasks({Key? key}) : super(key: key);
+  const HomeTasks({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +21,8 @@ class HomeTasks extends StatelessWidget {
           const SizedBox(height: 20),
           Row(
             children: [
-              Expanded(
+              Padding(
+                padding: AppConstants.defaultComponentPadding,
                 child: Selector<HomeController, String>(
                   selector: (context, controller) =>
                       controller.filterSelected.description,
@@ -34,14 +36,13 @@ class HomeTasks extends StatelessWidget {
               ),
             ],
           ),
-          Column(
-            children: context
-                .select<HomeController, List<TaskModel>>(
-                    (controller) => controller.filteredTasks)
-                .map(
-                  (t) => Task(model: t),
-                )
-                .toList(),
+          Selector<HomeController, List<TaskModel>>(
+            selector: (context, controller) => controller.filteredTasks,
+            builder: (context, tasks, child) {
+              return Column(
+                children: tasks.map((t) => Task(model: t)).toList(),
+              );
+            },
           ),
         ],
       ),
